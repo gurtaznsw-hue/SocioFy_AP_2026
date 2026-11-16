@@ -1,0 +1,24 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  fullName       String
+  collegeEmail   String   @unique
+  collegeName    String
+  department     String
+  academicYear   String
+  password       String
+  termsAccepted  Boolean  @default(false)
+  isVerified     Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+

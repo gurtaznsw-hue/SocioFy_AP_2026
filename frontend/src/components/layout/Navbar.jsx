@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, ArrowRight, GraduationCap } from 'lucide-react';
 import PrimaryButton from '../common/PrimaryButton';
 
@@ -66,8 +67,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
           {/* Left: Brand Logo & Name */}
-          <a
-            href="#top"
+          <Link
+            to="/"
             onClick={(e) => handleNavClick(e, 'top')}
             className="flex items-center gap-2.5 group cursor-pointer"
             aria-label="SocioFy Home"
@@ -83,7 +84,7 @@ const Navbar = () => {
                 Campus Network
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Middle: Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-1 lg:gap-2">
@@ -101,17 +102,16 @@ const Navbar = () => {
 
           {/* Right: Auth Action Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => alert('Log In modal / route is a placeholder for future authentication.')}
+            <Link
+              to="/login"
               className="px-4 py-2 text-sm font-medium text-[#17233B] hover:text-[#5277D9] transition-colors cursor-pointer"
             >
               Log In
-            </button>
+            </Link>
             <PrimaryButton
               size="sm"
               variant="primary"
-              onClick={(e) => handleNavClick(e, 'cta')}
+              to="/signup"
               icon={<ArrowRight className="w-4 h-4" />}
             >
               Get Started
@@ -149,21 +149,19 @@ const Navbar = () => {
           </div>
 
           <div className="mt-5 pt-4 border-t border-[#E5E7EB] flex flex-col gap-2.5">
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                alert('Log In is a placeholder for future authentication.');
-              }}
-              className="w-full py-2.5 text-center text-sm font-medium text-[#17233B] border border-[#E5E7EB] rounded-xl hover:bg-[#F8F9FC] transition-colors"
+            <Link
+              to="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-2.5 text-center text-sm font-medium text-[#17233B] border border-[#E5E7EB] rounded-xl hover:bg-[#F8F9FC] transition-colors block"
             >
               Log In
-            </button>
+            </Link>
             <PrimaryButton
               variant="primary"
               size="md"
               className="w-full"
-              onClick={(e) => handleNavClick(e, 'cta')}
+              to="/signup"
+              onClick={() => setMobileMenuOpen(false)}
               icon={<ArrowRight className="w-4 h-4" />}
             >
               Get Started

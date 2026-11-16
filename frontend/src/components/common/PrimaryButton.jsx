@@ -1,12 +1,15 @@
+import { Link } from 'react-router-dom';
+
 /**
  * PrimaryButton Component
  * Standardized button supporting primary, secondary, and ghost variants.
- * Can be rendered as either an HTML <button> or an <a> anchor link.
+ * Can be rendered as an HTML <button>, a React Router <Link>, or an <a> anchor link.
  *
  * @param {Object} props
  * @param {React.ReactNode} props.children - Button label or nested content
  * @param {'primary' | 'secondary' | 'navy' | 'ghost' | 'outline-white'} [props.variant='primary']
  * @param {'sm' | 'md' | 'lg'} [props.size='md']
+ * @param {string} [props.to] - If supplied, component renders as a React Router <Link>
  * @param {string} [props.href] - If supplied, component renders as an <a> tag
  * @param {Function} [props.onClick] - Click handler
  * @param {React.ReactNode} [props.icon] - Optional trailing icon
@@ -19,6 +22,7 @@ const PrimaryButton = ({
   children,
   variant = 'primary',
   size = 'md',
+  to,
   href,
   onClick,
   icon,
@@ -56,6 +60,16 @@ const PrimaryButton = ({
   const combinedClasses = `${baseClasses} ${variantClasses[variant] || variantClasses.primary} ${
     sizeClasses[size] || sizeClasses.md
   } ${className}`;
+
+  if (to) {
+    return (
+      <Link to={to} onClick={onClick} className={combinedClasses} {...rest}>
+        {iconLeft && <span className="shrink-0">{iconLeft}</span>}
+        <span>{children}</span>
+        {icon && <span className="shrink-0">{icon}</span>}
+      </Link>
+    );
+  }
 
   if (href) {
     return (

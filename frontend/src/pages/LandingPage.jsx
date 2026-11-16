@@ -7,7 +7,6 @@ import Communication from '../components/landing/Communication';
 import ProjectsPreview from '../components/landing/ProjectsPreview';
 import CommunitiesPreview from '../components/landing/CommunitiesPreview';
 import EventsPreview from '../components/landing/EventsPreview';
-import CallToAction from '../components/landing/CallToAction';
 
 /**
  * LandingPage Component
@@ -42,12 +41,9 @@ const LandingPage = () => {
 
         {/* 8. Sample Events Preview */}
         <EventsPreview />
-
-        {/* 9. Final Call to Action */}
-        <CallToAction />
       </main>
 
-      {/* 10. Platform Footer */}
+      {/* Platform Footer immediately following Events */}
       <Footer />
     </div>
   );
