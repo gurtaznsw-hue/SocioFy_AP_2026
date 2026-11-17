@@ -28,6 +28,8 @@
   "devDependencies": {
     "prisma": "^7.10.1"
   }
+
+  
 }
 
 
